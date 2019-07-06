@@ -1,0 +1,43 @@
+import os
+
+from dotenv import load_dotenv
+import pytest
+
+from pages.login_page import LoginPage
+
+load_dotenv()  # loading valid email and password from .env file
+
+LOGIN_PAGE_URL = 'https://courses.ultimateqa.com/users/sign_in'
+
+VALID_EMAIL = os.getenv('VALID_EMAIL')
+VALID_PASSWORD = os.getenv('VALID_PASSWORD')
+
+INVALID_EMAIL = 'JohnDoe72416618@gmail.com'
+INVALID_PASSWORD = 'Jsdfdsfcvx1231cxfdgb'
+
+
+@pytest.mark.login
+class TestLoginPage:
+
+    def test_login_form_is_present(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.ensure_login_form_is_present()
+
+    def test_login_with_valid_credentials(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.login(email=VALID_EMAIL, password=VALID_PASSWORD)
+        login_page.ensure_login_failed_message_is_not_present()
+
+    def test_login_with_valid_credentials_and_remember_me(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.login_with_remember_me(email=VALID_EMAIL, password=VALID_PASSWORD)
+        login_page.ensure_login_failed_message_is_not_present()
+
+    def test_login_with_invalid_credentials(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.login(email=INVALID_EMAIL, password=INVALID_PASSWORD)
+        login_page.ensure_login_failed_message_is_present()
