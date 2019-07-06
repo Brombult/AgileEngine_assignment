@@ -26,4 +26,4 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.PASSWORD_FIELD), 'no "password" field'
         assert self.is_element_present(*LoginPageLocators.REMEMBER_ME_CHECKBOX), 'no "remember me" checkbox'
         assert self.is_element_present(*LoginPageLocators.FORGOT_PASSWORD_LINK), 'no "forgot password" link'
-        assert self.is_element_present(*LoginPageLocators.SIGN_IN_BUTTON), 'no "remember me" checkbox'
+        assert self.is_element_present(*LoginPageLocators.SIGN_IN_BUTTON), 'no "sign in" button'
