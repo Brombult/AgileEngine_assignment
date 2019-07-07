@@ -33,7 +33,7 @@ class TestLoginPage:
 
         main_page = MainPage(browser, browser.current_url)
         main_page.ensure_main_page_is_open()
-        main_page.ensure_that_sign_in_message_is_displayed()
+        main_page.ensure_that_sign_in_successful_message_is_displayed()
 
     def test_login_with_valid_credentials_and_remember_me(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
@@ -43,7 +43,7 @@ class TestLoginPage:
 
         main_page = MainPage(browser, browser.current_url)
         main_page.ensure_main_page_is_open()
-        main_page.ensure_that_sign_in_message_is_displayed()
+        main_page.ensure_that_sign_in_successful_message_is_displayed()
 
     def test_login_with_invalid_credentials(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
