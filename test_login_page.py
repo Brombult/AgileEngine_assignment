@@ -5,12 +5,12 @@ import pytest
 
 from pages.login_page import LoginPage
 
-load_dotenv()  # loading valid email and password from .env file
+load_dotenv()  # loading .env file
 
 LOGIN_PAGE_URL = 'https://courses.ultimateqa.com/users/sign_in'
 
-VALID_EMAIL = os.getenv('VALID_EMAIL')
-VALID_PASSWORD = os.getenv('VALID_PASSWORD')
+VALID_EMAIL = os.getenv('VALID_EMAIL')  # retrieving valid email from .env file
+VALID_PASSWORD = os.getenv('VALID_PASSWORD')  # retrieving valid password from .env file
 
 INVALID_EMAIL = 'JohnDoe72416618@gmail.com'
 INVALID_PASSWORD = 'Jsdfdsfcvx1231cxfdgb'
