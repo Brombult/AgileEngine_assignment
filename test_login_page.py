@@ -41,3 +41,21 @@ class TestLoginPage:
         login_page.open()
         login_page.login(email=INVALID_EMAIL, password=INVALID_PASSWORD)
         login_page.ensure_login_failed_message_is_present()
+
+    def test_login_with_valid_email_and_invalid_password(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.login(email=VALID_EMAIL, password=INVALID_PASSWORD)
+        login_page.ensure_login_failed_message_is_present()
+
+    def test_login_with_invalid_email_and_valid_password(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.login(email=INVALID_EMAIL, password=VALID_PASSWORD)
+        login_page.ensure_login_failed_message_is_present()
+
+    def test_login_with_empty_credentials(self, browser):
+        login_page = LoginPage(browser, LOGIN_PAGE_URL)
+        login_page.open()
+        login_page.login(email='', password='')
+        login_page.ensure_login_failed_message_is_present()
