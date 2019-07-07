@@ -23,48 +23,48 @@ class TestLoginPage:
     def test_login_form_is_present(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
-        login_page.ensure_login_form_is_present()
+        login_page.confirm_login_form_is_present()
 
     def test_login_with_valid_credentials(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
         login_page.login(email=VALID_EMAIL, password=VALID_PASSWORD)
-        login_page.ensure_login_failed_message_is_not_present()
+        login_page.confirm_login_failed_message_is_not_present()
 
         main_page = MainPage(browser, browser.current_url)
-        main_page.ensure_main_page_is_open()
-        main_page.ensure_that_sign_in_successful_message_is_displayed()
+        main_page.confirm_main_page_is_open()
+        main_page.confirm_that_sign_in_successful_message_is_displayed()
 
     def test_login_with_valid_credentials_and_remember_me(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
         login_page.login_with_remember_me(email=VALID_EMAIL, password=VALID_PASSWORD)
-        login_page.ensure_login_failed_message_is_not_present()
+        login_page.confirm_login_failed_message_is_not_present()
 
         main_page = MainPage(browser, browser.current_url)
-        main_page.ensure_main_page_is_open()
-        main_page.ensure_that_sign_in_successful_message_is_displayed()
+        main_page.confirm_main_page_is_open()
+        main_page.confirm_that_sign_in_successful_message_is_displayed()
 
     def test_login_with_invalid_credentials(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
         login_page.login(email=INVALID_EMAIL, password=INVALID_PASSWORD)
-        login_page.ensure_login_failed_message_is_present()
+        login_page.confirm_login_failed_message_is_present()
 
     def test_login_with_valid_email_and_invalid_password(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
         login_page.login(email=VALID_EMAIL, password=INVALID_PASSWORD)
-        login_page.ensure_login_failed_message_is_present()
+        login_page.confirm_login_failed_message_is_present()
 
     def test_login_with_invalid_email_and_valid_password(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
         login_page.login(email=INVALID_EMAIL, password=VALID_PASSWORD)
-        login_page.ensure_login_failed_message_is_present()
+        login_page.confirm_login_failed_message_is_present()
 
     def test_login_with_empty_credentials(self, browser):
         login_page = LoginPage(browser, LOGIN_PAGE_URL)
         login_page.open()
         login_page.login(email='', password='')
-        login_page.ensure_login_failed_message_is_present()
+        login_page.confirm_login_failed_message_is_present()

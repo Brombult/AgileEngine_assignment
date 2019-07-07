@@ -15,13 +15,13 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.REMEMBER_ME_CHECKBOX).click()
         self.browser.find_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
 
-    def ensure_login_failed_message_is_present(self):
+    def confirm_login_failed_message_is_present(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FAILED_MESSAGE), 'no "login failed message"'
 
-    def ensure_login_failed_message_is_not_present(self):
+    def confirm_login_failed_message_is_not_present(self):
         assert self.is_not_element_present(*LoginPageLocators.LOGIN_FAILED_MESSAGE), '"login failed message" is present'
 
-    def ensure_login_form_is_present(self):
+    def confirm_login_form_is_present(self):
         assert self.is_element_present(*LoginPageLocators.EMAIL_FIELD), 'no "email" field'
         assert self.is_element_present(*LoginPageLocators.PASSWORD_FIELD), 'no "password" field'
         assert self.is_element_present(*LoginPageLocators.REMEMBER_ME_CHECKBOX), 'no "remember me" checkbox'
