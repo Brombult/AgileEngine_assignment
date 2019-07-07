@@ -11,4 +11,4 @@ class LoginPageLocators:
 
 
 class MainPageLocators:
-    SIGN_IN_SUCCESSFULLY = (By.CSS_SELECTOR, 'div[data-message="Signed in successfully."]')
+    SIGN_IN_SUCCESSFULLY_MESSAGE = (By.CSS_SELECTOR, 'div[data-message="Signed in successfully."]')
